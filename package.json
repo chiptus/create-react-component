@@ -13,7 +13,7 @@
   },
   "name": "create-react-component",
   "description": "get component name (as snake case)",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "main": "index.js",
   "devDependencies": {
     "eslint": "^4.2.0",
