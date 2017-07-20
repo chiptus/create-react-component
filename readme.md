@@ -1,4 +1,4 @@
-# Create-ng-component
+# Create-react-component
 
 
 ## Work flow
