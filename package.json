@@ -1,0 +1,24 @@
+{
+  "dependencies": {
+    "commander": "^2.10.0",
+    "mustache": "^2.3.0"
+  },
+  "bin": {
+    "create-react-component": "./index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "name": "create-react-component",
+  "description": "get component name (as snake case)",
+  "version": "0.1.0",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
