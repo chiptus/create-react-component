@@ -4,10 +4,12 @@ import PropTypes from 'prop-types';
 import './{{paramCase}}.css';
 
 const {{pascalCase}} = () => (
-  <div class="{{paramCase}}"></div>
+  <div className="{{paramCase}}"></div>
 );
 
 {{pascalCase}}.propTypes = {}
+
+export default {{pascalCase}};
 `;
 
 const index = `import {{pascalCase}} from './{{paramCase}}.js'
