@@ -1,13 +1,12 @@
 # Create-ng-component
 
 ## use
-run `yarn create ng-component <component-name>`
+run `yarn create react-component <component-name>`
 
 or
 ```
-npm i -g create-ng-component
-create-ng-component <component-name>
-
+npm i -g create-react-component
+create-react-component <component-name>
 ```
 
 component name should be snake cased.
@@ -25,28 +24,20 @@ component name should be snake cased.
 ```
 import componentName from './component-name';
 export default componentName;
-
 ```
 
 **component-name.js**
 ```
-import templateUrl from './component-name';
-const name = 'componentName"
+import React from 'react';
+import PropTypes from 'prop-types';
 
-export default {
-  templateUrl,
-  name,
-  bindings: {},
-  controller: Ctrl
-}
+import './component-name.css';
 
-function Ctrl() {}
+const componentName = () => (
+  <div class="component-name"></div>
+);
 
-```
-
-**component-name.tmpl.html**
-```
-<div class="component-name"></div>
+componentName.propTypes = {}
 ```
 
 **component-name.css**
