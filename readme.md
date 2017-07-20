@@ -1,15 +1,5 @@
 # Create-ng-component
 
-## use
-run `yarn create react-component <component-name>`
-
-or
-```
-npm i -g create-react-component
-create-react-component <component-name>
-```
-
-component name should be snake cased.
 
 ## Work flow
 1. get component name (as snake case)
