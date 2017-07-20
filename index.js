@@ -1,49 +1,30 @@
 #!/usr/bin/env node
 const fs = require('fs');
 const Mustache = require('mustache');
-
-let component = `import React from 'react';
-import PropTypes from 'prop-types';
-
-import './{{snakeCase}}.css';
-
-const {{camelCase}} = () => (
-  <div class="{{snakeCase}}"></div>
-);
-
-{{camelCase}}.propTypes = {}
-`;
-
-let index = `import {{camelCase}} from './{{snakeCase}}.js'
-export default {{camelCase}};
-`;
-
-let style = `.{{snakeCase}} {
-  
-}`;
+const changeCase = require('change-case');
+const templates = require('./templates');
 
 const program = require('commander');
 
 program
   .arguments('<name>')
   .action(name => {
-    return main(name);
+    try {
+      return main(name);
+    } catch (e) {
+      console.log(e);
+    }
   })
   .parse(process.argv);
 
 async function main(name) {
-  const { camelCase, snakeCase } = parseName(name);
+  const { pascalCase, paramCase } = parseName(name);
 
-  await makeDirIfNotExist(snakeCase);
+  await makeDirIfNotExist(paramCase);
 
-  const templates = {
-    index,
-    component,
-    style,
-  };
-  const rendered = renderTemplates(templates, { camelCase, snakeCase });
+  const rendered = renderTemplates(templates, { pascalCase, paramCase });
 
-  saveFiles(snakeCase, rendered);
+  saveFiles(paramCase, rendered);
 }
 
 async function saveFiles(componentName, renderedTemplates) {
@@ -58,26 +39,19 @@ async function saveFiles(componentName, renderedTemplates) {
   );
 }
 
-function renderTemplates(templates, { camelCase, snakeCase }) {
-  const index = render(templates.index);
-  const component = render(templates.component);
-  const style = render(templates.style);
-  return { index, component, style };
+function renderTemplates(templates, { pascalCase, paramCase }) {
+  return renderTuple(templates).reduce(function reducer(obj, [key, val]) {
+    obj[key] = val;
+    return obj;
+  }, {});
 
   function render(template) {
-    return Mustache.render(template, { camelCase, snakeCase });
+    return Mustache.render(template, { pascalCase, paramCase });
   }
-}
 
-async function getFile(filename) {
-  return new Promise((resolve, reject) =>
-    fs.readFile(filename, (err, data) => {
-      if (err) {
-        return reject(err);
-      }
-      resolve(data.toString());
-    })
-  );
+  function renderTuple(templates) {
+    return Object.keys(templates).map(k => [k, render(templates[k])]);
+  }
 }
 
 async function writeFile(filename, fileInput) {
@@ -92,9 +66,9 @@ async function writeFile(filename, fileInput) {
 }
 
 function parseName(name) {
-  const snakeCase = name;
-  const camelCase = name.replace(/-([A-Za-z])/g, (s, c) => c.toUpperCase());
-  return { snakeCase, camelCase };
+  const paramCase = changeCase.param(name);
+  const pascalCase = changeCase.pascal(name);
+  return { paramCase, pascalCase };
 }
 
 function makeDirIfNotExist(dirname) {

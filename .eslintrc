@@ -1,0 +1,16 @@
+{
+  "extends": [
+    "prettier"
+  ],
+  "rules": {
+    "no-unused-vars": "warn"
+  },
+  "parserOptions": {
+    "ecmaVersion": 8,
+    "sourceType": "module"
+  },
+  "env": {
+    "browser": true,
+    "node": true
+  }
+}

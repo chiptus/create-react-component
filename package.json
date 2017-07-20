@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "change-case": "^3.0.1",
     "commander": "^2.10.0",
     "mustache": "^2.3.0"
   },
@@ -14,7 +15,10 @@
   "description": "get component name (as snake case)",
   "version": "0.1.0",
   "main": "index.js",
-  "devDependencies": {},
+  "devDependencies": {
+    "eslint": "^4.2.0",
+    "eslint-config-google": "^0.9.1"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
