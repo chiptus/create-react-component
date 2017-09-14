@@ -5,13 +5,13 @@
     "mustache": "^2.3.0"
   },
   "bin": {
-    "create-react-component": "./index.js"
+    "create-react-comp": "./index.js"
   },
   "repository": {
     "type": "git",
     "url": ""
   },
-  "name": "create-react-component",
+  "name": "create-react-comp",
   "description": "get component name (as snake case)",
   "version": "0.2.1",
   "main": "index.js",

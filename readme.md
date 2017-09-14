@@ -12,22 +12,47 @@
 ## Templates
 **index.js**
 ```
-import componentName from './component-name';
-export default componentName;
+import ComponentName from './component-name';
+export default ComponentName;
 ```
 
 **component-name.js**
+stateless:
 ```
 import React from 'react';
 import PropTypes from 'prop-types';
 
 import './component-name.css';
 
-const componentName = () => (
+const ComponentName = () => (
   <div class="component-name"></div>
 );
 
-componentName.propTypes = {}
+ComponentName.propTypes = {}
+```
+
+or a stateful (by adding the flag -s):
+```
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+
+import './component-name.css';
+
+class ComponentName extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {};
+  }
+
+  render() {
+    return (<div className="component-name"></div>);
+  }
+}
+
+ComponentName.propTypes = {}
+
+export default ComponentName;
 ```
 
 **component-name.css**
