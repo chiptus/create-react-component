@@ -30,7 +30,6 @@ async function main(name, stateful) {
 }
 
 async function saveFiles(componentName, renderedTemplates, stateful) {
-  console.log(stateful);
   await writeFile(`${componentName}/index.js`, renderedTemplates.index);
   await writeFile(
     `${componentName}/${componentName}.js`,
