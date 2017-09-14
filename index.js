@@ -8,7 +8,7 @@ const program = require('commander');
 
 program
   .arguments('<name>')
-  .option('--stateful', 'Stateful component')
+  .option('-s, --stateful', 'Stateful component')
   .action(name => {
     try {
       return main(name, program.stateful);
