@@ -8,30 +8,33 @@ const program = require('commander');
 
 program
   .arguments('<name>')
+  .option('--stateful', 'Stateful component')
   .action(name => {
     try {
-      return main(name);
+      return main(name, program.stateful);
     } catch (e) {
       console.log(e);
+      process.exit(1);
     }
   })
   .parse(process.argv);
 
-async function main(name) {
+async function main(name, stateful) {
   const { pascalCase, paramCase } = parseName(name);
 
   await makeDirIfNotExist(paramCase);
 
   const rendered = renderTemplates(templates, { pascalCase, paramCase });
 
-  saveFiles(paramCase, rendered);
+  saveFiles(paramCase, rendered, stateful);
 }
 
-async function saveFiles(componentName, renderedTemplates) {
+async function saveFiles(componentName, renderedTemplates, stateful) {
+  console.log(stateful);
   await writeFile(`${componentName}/index.js`, renderedTemplates.index);
   await writeFile(
     `${componentName}/${componentName}.js`,
-    renderedTemplates.component
+    stateful ? renderedTemplates.statefulComponent : renderedTemplates.component
   );
   await writeFile(
     `${componentName}/${componentName}.css`,
