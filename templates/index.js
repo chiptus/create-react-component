@@ -3,9 +3,11 @@ import PropTypes from 'prop-types';
 
 import './{{paramCase}}.css';
 
-const {{pascalCase}} = () => (
-  <div className="{{paramCase}}"></div>
-);
+const {{pascalCase}} = () => {
+  return (
+    <div className="{{paramCase}}"></div>
+  )
+};
 
 {{pascalCase}}.propTypes = {}
 
