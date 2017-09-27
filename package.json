@@ -5,15 +5,15 @@
     "mustache": "^2.3.0"
   },
   "bin": {
-    "create-react-comp": "./index.js"
+    "create-react-cmp": "./index.js"
   },
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "git@github.com:chiptus/create-onent.git"
   },
-  "name": "create-react-comp",
+  "name": "create-react-cmp",
   "description": "get component name (as snake case)",
-  "version": "0.2.1",
+  "version": "0.1.0",
   "main": "index.js",
   "devDependencies": {
     "eslint": "^4.6.1",
