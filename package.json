@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:chiptus/create-onent.git"
+    "url": "git@github.com:chiptus/create-react-component.git"
   },
   "name": "create-react-cmp",
   "description": "get component name (as snake case)",
